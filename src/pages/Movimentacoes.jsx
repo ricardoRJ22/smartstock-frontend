@@ -12,6 +12,7 @@ export default function Movimentacoes() {
 
   const nomeDoProduto = (id) => produtos.find((p) => p.id === id)?.nome ?? "Produto removido";
 
+<<<<<<< HEAD
   const enviar = async (e) => {
     e.preventDefault();
     setSucesso("");
@@ -23,6 +24,19 @@ export default function Movimentacoes() {
     } catch (err) {
       setErro(err.message);
     }
+=======
+  const enviar = (e) => {
+    e.preventDefault();
+    setSucesso("");
+    const msg = registrarMovimentacao({ produtoId, tipo, quantidade });
+    if (msg) {
+      setErro(msg);
+      return;
+    }
+    setErro("");
+    setSucesso("Movimentação registrada.");
+    setQuantidade("");
+>>>>>>> e488ef75f55fc95e44c0cea3fb845f88631efa94
   };
 
   return (

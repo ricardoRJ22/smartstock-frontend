@@ -34,6 +34,7 @@ export default function Produtos() {
     setEditando(p);
   };
 
+<<<<<<< HEAD
   const salvar = async (e) => {
     e.preventDefault();
     if (!form.nome.trim()) return setErro("O nome é obrigatório.");
@@ -55,6 +56,20 @@ export default function Produtos() {
     } catch (err) {
       window.alert(err.message);
     }
+=======
+  const salvar = (e) => {
+    e.preventDefault();
+    if (!form.nome.trim()) return setErro("O nome é obrigatório.");
+    if (Number(form.preco) < 0 || Number(form.quantidade) < 0) return setErro("Valores não podem ser negativos.");
+    const dados = { ...form, quantidade: Number(form.quantidade), estoqueMinimo: Number(form.estoqueMinimo), preco: Number(form.preco) };
+    if (editando === "novo") addProduto(dados);
+    else updateProduto(editando.id, dados);
+    setEditando(null);
+  };
+
+  const excluir = (p) => {
+    if (window.confirm(`Excluir "${p.nome}"? As movimentações dele também serão removidas.`)) removeProduto(p.id);
+>>>>>>> e488ef75f55fc95e44c0cea3fb845f88631efa94
   };
 
   return (
